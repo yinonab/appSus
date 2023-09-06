@@ -1,4 +1,4 @@
-import { mailService } from "../../../services/mail-service.js";
+import { mailService } from "../services/mail-service.js";
 import { MailList } from "../../../cmps/mailList.jsx";
 import { MailFilter } from "../cmps/MailFilter.jsx";
 import { MailAside } from "../cmps/MailAside.jsx";
@@ -11,17 +11,16 @@ export function MailIndex() {
       .query(filterBy)
       .then(setMails)
       .catch((err) => console.log(err));
-  }, [mails]);
+  }, [filterBy]);
 
   function onSetFilterBy(filterBy) {
     setFilterBy((prevFilter) => ({ ...prevFilter, ...filterBy }));
   }
-
   if (!mails) return <h1>Loading..</h1>;
   return (
     <section className="mail-index">
       <div>
-        <MailFilter />
+        <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
       </div>
       <main>
         <MailList emails={mails} />
