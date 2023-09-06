@@ -1,4 +1,5 @@
 Sprint3-Appsus-missKeep-v3.01.pdf
 Sprint3-Appsus-misterEmail-v3.0.pdf
 Sprint3-Appsus-v2.31.pdf
-GitHub Pages - Path.pdf
+./GitHub Pages - Path.pdf
+*.pfd

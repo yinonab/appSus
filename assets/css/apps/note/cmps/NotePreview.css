@@ -1,0 +1,87 @@
+/* Container for individual notes */
+.note-container {
+    background-color: #edbebe;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  /* Note title style */
+  .note-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px 0; /* Add padding here */
+  }
+  
+  /* Note content style */
+  .note-content {
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 5px 0; /* Add padding here */
+  }
+  .check:checked{
+    background-color: transparent;
+}
+  .check{
+    background-color: transparent;
+}
+  
+  /* Pin icon style */
+  .pin-icon {
+    font-size: 20px;
+    color: #fbbc05; /* Yellow color used for pinned notes */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  /* Toolbar style for editing options (e.g., delete, archive) */
+  .note-toolbar {
+    margin-top: 10px;
+    text-align: right;
+  }
+  
+  /* Button style for editing options */
+  .note-button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #666;
+  }
+  
+  /* Button hover effect */
+  .note-button:hover {
+    color: #333;
+  }
+  
+  /* Text input style for editing notes */
+  .note-input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    padding: 5px; /* Add padding here */
+  }
+  
+  /* Placeholder text style for input */
+  .note-input::placeholder {
+    color: #999;
+  }
+  
+  /* Note color options (you can add more) */
+  .note-color {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+    cursor: pointer
+  }
+  
