@@ -21,3 +21,15 @@ img {
     width: 100%;
     object-fit: cover;
 }
+/* Remove list bullets and style list items as plain text */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    margin: 0;
+    padding: 0;
+  }
+  
