@@ -12,10 +12,11 @@ export function MailDetails() {
       .then(setMail)
       .catch((err) => console.log(err));
   }, []);
-  console.log(mail);
+  // console.log(mail);
   function onRemoveMail() {
     mailService.remove(params.mailId).then(navigate("/mail"));
   }
+  // console.log(mail);
 
   if (!mail) return <h1>Loading...</h1>;
   return (
@@ -26,7 +27,6 @@ export function MailDetails() {
       <button onClick={onRemoveMail}>Delete</button>
       <button
         onClick={() => {
-          mail.isRead = true;
           navigate("/mail");
         }}
       >

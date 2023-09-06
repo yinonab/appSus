@@ -29,9 +29,21 @@ function getUser() {
 
 function query(filterBy) {
   return asyncStorageService.query(MAILS_KEY).then((mails) => {
-    if (filterBy.isRead) {
-      const regex = new RegExp(filterBy.isRead, "i");
-      mails = mails.filter((mail) => regex.test(mail.isRead));
+    if (filterBy.isRead === true) {
+      // const regex = new RegExp(filterBy.isRead, "i");
+      mails = mails.filter((mail) => mail.isRead === false);
+    }
+
+    if (filterBy.txt) {
+      // const regex = new RegExp(filterBy.txt, "i");
+      mails = mails.filter(
+        (mail) =>
+          mail.body.includes(filterBy.txt) ||
+          mail.subject.includes(filterBy.txt)
+      );
+    }
+    if (filterBy.status) {
+      mails = mails.filter((mail) => mail.status === filterBy.status);
     }
     return mails;
   });
@@ -136,17 +148,19 @@ function _createMails() {
         removedAt: null,
         from: "momo@momo.com",
         to: "user@appsus.com",
+        status: "inbox",
         // isRead: false,
       },
       {
         id: "e102",
-        subject: "Miss you!",
+        subject: "love You!",
         body: "Would love to catch up sometimes",
         isRead: false,
         sentAt: 1551133930594,
         removedAt: null,
         from: "momo@momo.com",
         to: "user@appsus.com",
+        status: "trash",
         // isRead: false,
       },
     ];

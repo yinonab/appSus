@@ -1,10 +1,59 @@
-export function MailFilter() {
+const { useState, useEffect } = React;
+
+export function MailFilter({ filterBy, onSetFilterBy }) {
+  const [filterByToEdit, setFilterByToEdit] = useState(filterBy);
+  useEffect(() => {
+    onSetFilterBy(filterByToEdit);
+  }, [filterByToEdit]);
+
+  function handleChange({ target }) {
+    const field = target.name;
+    let value = target.value;
+
+    switch (target.type) {
+      case "number":
+      case "range":
+        value = +value || "";
+        break;
+
+      case "checkbox":
+        value = target.checked;
+        break;
+
+      default:
+        break;
+    }
+
+    setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }));
+  }
+  function onSubmitFilter(ev) {
+    ev.preventDefault();
+    onSetFilterBy(filterByToEdit);
+  }
+
+  const { txt, isRead } = filterByToEdit || {};
   return (
     <section>
-      <label htmlFor="Search">
-        <input type="text" placeholder="Search email" />
-      </label>
-
+      <form onSubmit={onSubmitFilter}>
+        <label htmlFor="txt">
+          <input
+            onChange={handleChange}
+            value={txt}
+            id="txt"
+            name="txt"
+            type="text"
+            placeholder="Search email"
+          />
+        </label>
+        <label htmlFor="isRead">Only unread</label>
+        <input
+          onChange={handleChange}
+          value={isRead || false}
+          id="isRead"
+          name="isRead"
+          type="checkbox"
+        />
+      </form>
       <div className="logo">EmailMaster</div>
     </section>
   );

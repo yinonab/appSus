@@ -1,4 +1,6 @@
 const { useNavigate } = ReactRouterDOM;
+import { mailService } from "../apps/mail/services/mail-service.js";
+
 export function MailPreview({ mail }) {
   const navigate = useNavigate();
   const date = new Date(mail.sentAt);
@@ -6,14 +8,15 @@ export function MailPreview({ mail }) {
     day: "numeric",
     month: "long",
   });
+  function onCLickMail() {
+    mail.isRead = true;
+    mailService.save(mail);
+    console.log(mail);
+    navigate(`/mail/${mail.id}`);
+  }
   return (
     <tbody>
-      <tr
-        onClick={() => {
-          // mail.isRead = true;
-          navigate(`/mail/${mail.id}`);
-        }}
-      >
+      <tr onClick={onCLickMail}>
         <td className="bold">{mail.subject}</td>
         <td>{mail.body}</td>
         <td className="bold">{formattedDate}</td>
