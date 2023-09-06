@@ -1,1 +1,5 @@
- /* mail list */
+/* mail list */
+table {
+  width: 100%;
+  /* border: 2px solid grey; */
+}

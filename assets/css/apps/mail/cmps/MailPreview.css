@@ -1,0 +1,16 @@
+tbody {
+  width: 100%;
+  height: 5vh;
+}
+.bold {
+  font-weight: 800;
+}
+tr {
+  border-bottom: 1px solid grey;
+}
+tr:hover {
+  cursor: pointer;
+  background-color: grey;
+  color: white;
+  /* border: 2px solid black; */
+}

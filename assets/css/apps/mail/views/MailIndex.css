@@ -1,1 +1,19 @@
- /* mail index  */
+/* mail index  */
+.mail-index {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 1fr 8fr;
+}
+.mail-index div {
+  grid-column: 1/-1;
+  place-self: center center;
+}
+.mail-index main {
+  grid-column: 2/-1;
+  grid-row: 2/-1;
+}
+.mail-index aside {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
