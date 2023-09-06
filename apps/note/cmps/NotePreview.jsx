@@ -1,5 +1,8 @@
-export function NotePreview({ note }) {
-    const { style, type, info } = note
+
+const { Link } = ReactRouterDOM
+
+export function NotePreview({ note, onRemoveNote }) {
+    const { style, type, info, title } = note
     const defaultBackgroundColor = '#ddd'
     const backgroundColor = style ? style.backgroundColor || defaultBackgroundColor : defaultBackgroundColor
 
@@ -7,7 +10,10 @@ export function NotePreview({ note }) {
         <div>
             <article key={note.id} className="note-container" style={{ backgroundColor }}>
                 {type === 'NoteTxt' && (
-                    <h2 className="note-title">{info.txt}</h2>
+                    <div>
+                        <h2 className="note-title">{info.txt}</h2>
+                        <h2 className="note-title">{title}</h2>
+                    </div>
                 )}
                 {type === 'NoteImg' && (
                     <h2 className="note-title">{info.title}</h2>
@@ -27,9 +33,11 @@ export function NotePreview({ note }) {
                     </div>
                 )}
                 <section>
-                    <button className="note-button" onClick={() => onRemoveNote(note.id)}></button>
-                    {/* <button><Link to={`/note/${note.id}`}>Details</Link></button>
-                        <button><Link to={`/note/edit/${note.id}`}>Edit</Link></button> */}
+
+                    <button onClick={() => onRemoveNote(note.id)}>❌</button>
+                    <button><Link to={`/note/${note.id}`}>Details</Link></button>
+                    {/* <button><Link to={`/note/${note.id}`}>Edit</Link></button> */}
+
                 </section>
             </article>
         </div>
