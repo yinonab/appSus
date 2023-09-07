@@ -4,7 +4,7 @@ const { useState, useEffect } = React;
 
 export function MailList({ emails }) {
   return (
-    <table>
+    <table className="mail-list">
       {emails.map((email) => {
         return <MailPreview key={email.id} mail={email} />;
       })}

@@ -32,28 +32,27 @@ export function MailAside({ filterBy, onSetFilterBy }) {
       {/* <button>Inbox</button>
       <button>Starred</button>
       <button>Sent</button> */}
-      <button onClick={() => navigate("/mail/send")}>
-        <span>Send</span>
+      <button
+        title="Send mail"
+        className="compose-mail-btn"
+        onClick={() => navigate("/mail/send")}
+      >
         <i className="fa-solid fa-paper-plane"></i>
       </button>
-      <button onClick={getAll} className="btn flex space-between">
+      <button title="All emails" onClick={getAll} className="btn">
         <span>All</span>
         {/* <i className="fa-solid fa-inbox"></i> */}
       </button>
-      <button onClick={getInbox} className="btn flex space-between">
-        <span>Inbox</span>
+      <button title="Inbox" onClick={getInbox} className="btn ">
         <i className="fa-solid fa-inbox"></i>
       </button>
-      <button onClick={getStarred} className="btn flex space-between">
-        <span>Starred</span>
+      <button title="Stars emails" onClick={getStarred} className="btn">
         <i className="fa-solid fa-star"></i>
       </button>
-      <button onClick={getSent} className="btn flex space-between">
-        <span>Sent</span>
+      <button title="Sent emails" onClick={getSent} className="btn">
         <i className="fa-solid fa-arrow-right-from-bracket"></i>
       </button>
-      <button onClick={getTrash} className="btn flex space-between">
-        <span>Trash</span>
+      <button title="Trash" onClick={getTrash} className="btn">
         <i className="fa-solid fa-trash"></i>
       </button>
     </section>

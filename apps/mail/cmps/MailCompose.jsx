@@ -47,7 +47,7 @@ export function MailCompose() {
   }
 
   return (
-    <section className="mail-compose flex column space-between">
+    <section className="mail-compose ">
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">To:</label>
@@ -82,6 +82,7 @@ export function MailCompose() {
         </div>
         <button>send</button>
       </form>
+      <button onClick={() => navigate("/mail")}>Back</button>
     </section>
   );
 }

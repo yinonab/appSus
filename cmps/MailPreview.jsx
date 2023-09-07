@@ -1,7 +1,6 @@
 const { useNavigate } = ReactRouterDOM;
 const { useState } = React;
 import { mailService } from "../apps/mail/services/mail-service.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export function MailPreview({ mail }) {
   const navigate = useNavigate();
   const [isStarred, setIsStarred] = useState(false);
@@ -37,7 +36,7 @@ export function MailPreview({ mail }) {
           {formattedDate}
         </td>
         <td onClick={addAndRemoveStar}>
-          <button>
+          <button title="mark with star" className="star-btn">
             <i
               style={mail.isStarred ? { color: "gold" } : { color: "black" }}
               className="fa-solid fa-star"

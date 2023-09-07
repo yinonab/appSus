@@ -19,7 +19,7 @@ export function MailIndex() {
   if (!mails) return <h1>Loading..</h1>;
   return (
     <section className="mail-index">
-      <div>
+      <div className="mail-filter flex">
         <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
       </div>
       <main>

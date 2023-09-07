@@ -43,8 +43,13 @@ function query(filterBy) {
       );
     }
     if (filterBy.status) {
+      if (filterBy.status === "star") {
+        mails = mails.filter((mail) => mail.isStarred === true);
+        return mails;
+      }
       mails = mails.filter((mail) => mail.status === filterBy.status);
     }
+
     return mails;
   });
 }

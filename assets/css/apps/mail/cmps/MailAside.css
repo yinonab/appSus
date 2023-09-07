@@ -1,0 +1,28 @@
+.mail-aside {
+  height: 100%;
+  background-color: rgb(221, 241, 234);
+  /* border: 5px solid black; */
+}
+.mail-aside .btn {
+  background: none;
+  border: none;
+  height: 4em;
+  border-bottom: 2px solid grey;
+}
+.mail-aside .btn:hover {
+  cursor: pointer;
+  /* font-size: larger; */
+  border-bottom: 5px solid grey;
+}
+.compose-mail-btn {
+  border: none;
+  border-top: 2px solid grey;
+  border-bottom: 2px solid grey;
+  cursor: pointer;
+  background: none;
+  height: 4em;
+}
+.compose-mail-btn:hover {
+  border-top: 5px solid grey;
+  border-bottom: 5px solid grey;
+}
