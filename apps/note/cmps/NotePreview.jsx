@@ -11,21 +11,21 @@ export function NotePreview({ note, onRemoveNote }) {
             <article key={note.id} className="note-container" style={{ backgroundColor }}>
                 {type === 'NoteTxt' && (
                     <div>
-                        <h2 className="note-title">{info.txt}</h2>
-                        <h2 className="note-title">{title}</h2>
+                        <h2 contentEditable="true" suppressContentEditableWarning={true} className="note-title">{info.title}</h2>
+                        <h2 contentEditable="true" suppressContentEditableWarning={true} className="note-title">{info.txt}</h2>
                     </div>
                 )}
                 {type === 'NoteImg' && (
-                    <h2 className="note-title">{info.title}</h2>
+                    <h2 contentEditable="true" suppressContentEditableWarning={true} className="note-title">{info.title}</h2>
                 )}
                 {type === 'NoteTodos' && (
                     <div>
-                        <h2 className="note-title">{info.title}</h2>
+                        <h2 contentEditable="true" suppressContentEditableWarning={true} className="note-title">{info.title}</h2>
                         <ul className="note-content ">
                             {info.todos.map((todo, index) => (
                                 <li className="note-content " key={index}>
                                     <input className="check" type="checkbox" />
-                                    <label>{todo.txt}</label>
+                                    <label contentEditable="true" suppressContentEditableWarning={true}>{todo.txt}</label>
                                 </li>
                             ))}
                         </ul>

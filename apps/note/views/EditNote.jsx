@@ -20,62 +20,61 @@ export function NoteEdit({ note, onSetNote }) {
             .then(setNoteToEdit)
             .catch(err => console.log('err:', err))
     }
-    const handleTitleClick = () => {
-        setShowTitleInput(true);
-    };
+   
     function handleChange({ target }) {
-        console.log('target:', target)
-        const field = target.name
-        let value = target.value
-
+        const field = target.name;
+        let value = target.value;
+    
         switch (target.type) {
             case 'number':
             case 'range':
-                value = +value || ''
+                value = +value || '';
                 break;
-
+    
             case 'checkbox':
-                value = target.checked
-                break
-
+                value = target.checked;
+                break;
+    
             default:
                 break;
         }
-
-        if (field === 'info') {
-            const info = { ...noteToEdit.info }
-            console.log('field:', field)
-            console.log('info:', info)
-            info.txt = value
-            console.log('txt:', txt)
-
-            setNoteToEdit(prevNoteToEdit => ({ ...prevNoteToEdit, [field]: info }))
-            return
-        }
-        setNoteToEdit(prevNoteToEdit => ({ ...prevNoteToEdit, [field]: value }))
+    
+        setNoteToEdit(prevNoteToEdit => {
+            const info = { ...prevNoteToEdit.info };
+            info[field] = value;
+            return { ...prevNoteToEdit, info };
+        });
     }
+    
 
-
+   
     function onSaveNote(ev) {
         ev.preventDefault()
         noteService.save(noteToEdit)
             .then(() => {
-                // navigate('/note')
-                onSetNote(noteToEdit)
+                // Clear the input fields after saving
+                setNoteToEdit({ ...note, info: { title: '' }, info: { txt: '' } })
+                setShowTitleInput(false); // Reset the showTitleInput state
                 showSuccessMsg(`Added/Edited successfully! ${noteToEdit.id}`)
             })
             .catch(err => {
-                console.log('err:', err)
+                console.log('err:', err);
                 showErrorMsg('Problem Adding/Editing ' + noteToEdit.id)
-            })
+            });
     }
-    const { info: { txt },title } = noteToEdit
+
+
+    const handleTitleClick = () => {
+        setShowTitleInput(true);
+    };
+    const { txt, title } = noteToEdit.info
+
     return (
         <section className="note-edit">
             <form onSubmit={onSaveNote} >
                 {showTitleInput && (
                     <div>
-                        <label htmlFor="title"></label>
+                        <label htmlFor="info"></label>
                         <input
                             onChange={handleChange}
                             placeholder="Title"
@@ -87,9 +86,12 @@ export function NoteEdit({ note, onSetNote }) {
                     </div>
                 )}
                 <label htmlFor="info"></label>
-                <input onChange={handleChange} onClick={handleTitleClick} placeholder="Take a note..." value={txt} type="text" name="info" id="info" />
+                <input onChange={handleChange}
+                    onClick={handleTitleClick}
+                    placeholder="Take a note..." value={txt}
+                    type="text" name="txt" id="txt" />
 
-                
+
 
                 {/* <label htmlFor="listPrice">Price: </label>
                 <input onChange={handleChange} value={amount} type="number" name="listPrice" id="listPrice" /> */}
