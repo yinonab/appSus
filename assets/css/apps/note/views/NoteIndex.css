@@ -1,1 +1,19 @@
- /* note index */
+.note-index {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 10fr;}
+
+/* .note-index.header {
+    grid-column: 1/-1;
+    place-self: center center;
+}
+
+.note-index.main {
+    grid-column: 2/-1;
+    grid-row: 2/-1;
+}  */
+
+/* .side-filter.aside {
+    grid-column: 1;
+  grid-row: 1
+} */

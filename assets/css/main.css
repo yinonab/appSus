@@ -27,6 +27,9 @@
 @import "../../assets/css/apps/note/views/NoteIndex.css";
 @import "../../assets/css/apps/note/cmps/NoteList.css";
 @import "../../assets/css/apps/note/cmps/NotePreview.css";
+@import "../../assets/css/apps/note/views/NoteFilter.css";
+@import "../../assets/css/apps/note/views/NoteIndex.css";
+@import "../../assets/css/apps/note/views/EditNote.css";
 @import "./cmps/AppHeader.css";
 
 /* @import './apps/mail/cmps/MailList.css'; */

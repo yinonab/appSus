@@ -38,20 +38,18 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
     const { txt, title } = filterByToEdit.info
     return (
         <section className="note-filter">
-            <h2>Filter notes</h2>
-            <form onSubmit={onSubmitFilter}>
-
+            <form className="filter-form" onSubmit={onSubmitFilter}>
+                <button className="search"><i className="fa-solid fa-magnifying-glass"></i></button>
                 <label htmlFor="info"></label>
-                <input onChange={handleChange}
-                    placeholder="Filter title..." value={title}
+                <input className="input" onChange={handleChange}
+                    placeholder="Search" value={title}
                     type="title" name="title" id="title" />
 
                 <label htmlFor="info"></label>
-                <input onChange={handleChange}
-                    placeholder="Filter text..." value={txt}
+                <input className="input" onChange={handleChange}
+                     value={txt}
                     type="text" name="txt" id="txt" />
 
-                <button>Set Filter</button>
             </form>
         </section>
     )

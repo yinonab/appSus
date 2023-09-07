@@ -20,34 +20,34 @@ export function NoteEdit({ note, onSetNote }) {
             .then(setNoteToEdit)
             .catch(err => console.log('err:', err))
     }
-   
+
     function handleChange({ target }) {
         const field = target.name;
         let value = target.value;
-    
+
         switch (target.type) {
             case 'number':
             case 'range':
                 value = +value || '';
                 break;
-    
+
             case 'checkbox':
                 value = target.checked;
                 break;
-    
+
             default:
                 break;
         }
-    
+
         setNoteToEdit(prevNoteToEdit => {
             const info = { ...prevNoteToEdit.info };
             info[field] = value;
             return { ...prevNoteToEdit, info };
         });
     }
-    
 
-   
+
+
     function onSaveNote(ev) {
         ev.preventDefault()
         noteService.save(noteToEdit)
@@ -71,13 +71,13 @@ export function NoteEdit({ note, onSetNote }) {
 
     return (
         <section className="note-edit">
-            <form onSubmit={onSaveNote} >
+            <form className="edit-form" onSubmit={onSaveNote} >
                 {showTitleInput && (
                     <div>
                         <label htmlFor="info"></label>
-                        <input
+                        <input className="input"
                             onChange={handleChange}
-                            placeholder="Title"
+                            placeholder="    Title"
                             value={title}
                             type="text"
                             name="title"
@@ -86,17 +86,22 @@ export function NoteEdit({ note, onSetNote }) {
                     </div>
                 )}
                 <label htmlFor="info"></label>
-                <input onChange={handleChange}
+                <input className="input" onChange={handleChange}
                     onClick={handleTitleClick}
-                    placeholder="Take a note..." value={txt}
+                    placeholder="    Take a note..." value={txt}
                     type="text" name="txt" id="txt" />
+                <div class="btn-footer">
+                    {/* <button><i class="fa-light fa-palette"></i></button> */}
+                    <button className="Close"></button>
+                </div>
+
+
 
 
 
                 {/* <label htmlFor="listPrice">Price: </label>
                 <input onChange={handleChange} value={amount} type="number" name="listPrice" id="listPrice" /> */}
 
-                <button>Save</button>
             </form>
         </section>
     )
