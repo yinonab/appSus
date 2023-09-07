@@ -22,18 +22,18 @@ export const noteService = {
 function query(filterBy = {}) {
     return asyncStorageService.query(NOTE_KEY)
         .then(notes => {
-            if (filterBy.txt) {
-                const regex = new RegExp(filterBy.txt, 'i')
-                books = books.filter(book => regex.test(book.title))
-            }
-            if (filterBy.listPrice) {
-                books = books.filter(book => book.listPrice.amount >= filterBy.listPrice)
-            }
+            // if (filterBy.txt) {
+            //     const regex = new RegExp(filterBy.txt, 'i')
+            //     books = books.filter(book => regex.test(book.title))
+            // }
+            // if (filterBy.listPrice) {
+            //     books = books.filter(book => book.listPrice.amount >= filterBy.listPrice)
+            // }
             return notes
         })
 }
-function get(carId) {
-    return asyncStorageService.get(CAR_KEY, carId)
+function get(noteId) {
+    return asyncStorageService.get(NOTE_KEY, noteId)
 }
 
 function remove(noteId) {
@@ -41,6 +41,7 @@ function remove(noteId) {
 }
 
 function save(note) {
+    console.log('note:', note)
     if (note.id) {
         return asyncStorageService.put(NOTE_KEY, note)
     } else {
@@ -48,17 +49,18 @@ function save(note) {
     }
 }
 
-function getEmptyNote(id = '', title = '') {
+function getEmptyNote(id = '',type = '',title,txt = '') {
     return {
         id,
         createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,
+        title,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: '#edbebe'
         },
         info: {
-            txt: title
+            txt
         }
     }
 }
@@ -75,6 +77,7 @@ function _createNotes() {
                     backgroundColor: '#edbebe'
                 },
                 info: {
+                    title: 'Bobi and Me',
                     txt: 'Fullstack Me Baby!'
                 }
             },
