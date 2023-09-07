@@ -55,11 +55,11 @@ export function NoteEdit({ note, onSetNote }) {
                 // Clear the input fields after saving
                 setNoteToEdit({ ...note, info: { title: '' }, info: { txt: '' } })
                 setShowTitleInput(false); // Reset the showTitleInput state
-                showSuccessMsg(`Added/Edited successfully! ${noteToEdit.id}`)
+                showSuccessMsg(`Added/Edited successfully!`)
             })
             .catch(err => {
                 console.log('err:', err);
-                showErrorMsg('Problem Adding/Editing ' + noteToEdit.id)
+                showErrorMsg('Problem Adding/Editing ')
             });
     }
 

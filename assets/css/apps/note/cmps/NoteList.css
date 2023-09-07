@@ -1,5 +1,5 @@
 .note-list{
-    margin: 1rem;
+    margin: 7rem;
     margin-top: 3em;
     display: grid;
     grid-template-rows:repeat(2,1fr);

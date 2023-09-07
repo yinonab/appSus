@@ -34,11 +34,11 @@ export function NoteIndex() {
     function onRemoveNote(noteId) {
         noteService.remove(noteId).then(() => {
             setNotes(prevNotes => prevNotes.filter(note => note.id !== noteId))
-            showSuccessMsg(`Note Removed! ${noteId}`)
+            showSuccessMsg(`Note Removed!`)
         })
             .catch(err => {
                 console.log('err:', err)
-                showErrorMsg('Problem Removing ' + noteId)
+                showErrorMsg('Problem Removing ' )
             })
     }
     function onSetNote(note) {
@@ -53,6 +53,7 @@ export function NoteIndex() {
         note.info.title = editedContent.title;
         note.info.txt = editedContent.txt;
         noteService.save(note)
+        showSuccessMsg(`Note Updated!`)
         // Implement the logic to save edited content here
         // This function should update the notes data with the edited content
         console.log(`Saving edited content for noteId ${note}:`, editedContent);
