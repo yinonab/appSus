@@ -1,9 +1,10 @@
 
+import { noteService } from "../services/note.service.js"
 
 const { Link } = ReactRouterDOM
 const { useState, useEffect } = React
 
-export function NotePreview({ note, onRemoveNote,onSaveEditedContent }) {
+export function NotePreview({ note, onRemoveNote, onSaveEditedContent }) {
     const { style, type, info, title } = note
     const defaultBackgroundColor = '#ddd'
     const backgroundColor = style ? style.backgroundColor || defaultBackgroundColor : defaultBackgroundColor
@@ -13,8 +14,8 @@ export function NotePreview({ note, onRemoveNote,onSaveEditedContent }) {
     const handleSave = () => {
         // Call the onSaveEditedContent function and pass the updated content
         onSaveEditedContent(note, { title: editedTitle, txt: editedText });
-       
-      };
+
+    };
 
     return (
         <div>
@@ -34,13 +35,16 @@ export function NotePreview({ note, onRemoveNote,onSaveEditedContent }) {
                         <ul className="note-content">
                             {info.todos.map((todo, index) => (
                                 <li className="note-content" key={index}>
-                                    <input className="check" type="checkbox" />
-                                    <p contentEditable="true" suppressContentEditableWarning={true} onInput={(e) => setEditedText(e.target.innerText)}>{editedText}</p>
+                                    <input type="checkbox" />
+                                    {/* Place the text within the same list item */}
+                                    <p contentEditable="true" suppressContentEditableWarning={true} onInput={(e) => setEditedText(e.target.innerText)}>{todo.txt}</p>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 )}
+
+
                 <section>
                     <button onClick={handleSave}>Save</button>
                     <button onClick={() => onRemoveNote(note.id)}>❌</button>
