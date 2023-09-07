@@ -12,8 +12,8 @@ export const noteService = {
     save,
     getEmptyNote,
     // getNextBookId,
-    // getDefaultFilter,
-    // setFilterBy,
+    getDefaultFilter,
+    setFilterBy,
     // addReview,
     // getEmptyReview,
     // deleteReview
@@ -22,13 +22,15 @@ export const noteService = {
 function query(filterBy = {}) {
     return asyncStorageService.query(NOTE_KEY)
         .then(notes => {
-            // if (filterBy.txt) {
-            //     const regex = new RegExp(filterBy.txt, 'i')
-            //     books = books.filter(book => regex.test(book.title))
-            // }
-            // if (filterBy.listPrice) {
-            //     books = books.filter(book => book.listPrice.amount >= filterBy.listPrice)
-            // }
+            if (filterBy.info && filterBy.info.txt) { // Check if filterBy.info exists
+                const regex = new RegExp(filterBy.info.txt, 'i')
+                notes = notes.filter(note => regex.test(note.info.txt))
+            }
+            if (filterBy.info && filterBy.info.title) {
+                const regex = new RegExp(filterBy.info.title, 'i')
+                notes = notes.filter(note => regex.test(note.info.title))
+            }
+          
             return notes
         })
 }
@@ -48,18 +50,26 @@ function save(note) {
         return asyncStorageService.post(NOTE_KEY, note)
     }
 }
+function getDefaultFilter() {
+    return { info: '', title: '' }
+}
+function setFilterBy(filterBy = {}) {
+    if (filterBy.info !== undefined) filterBy.info = filterBy.info
+    if (filterBy.title !== undefined) filterBy.title = filterBy.title
+    return filterBy
+}
 
-function getEmptyNote(id = '',type = '',title,txt = '') {
+function getEmptyNote(id = '', type = '', title, txt = '') {
     return {
         id,
         createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,
-        title,
         style: {
             backgroundColor: '#edbebe'
         },
         info: {
+            title,
             txt
         }
     }

@@ -2,6 +2,7 @@ import { noteService } from "../services/note.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteEdit } from "../views/EditNote.jsx"
+import { NoteFilter } from "../views/NoteFilter.jsx"
 
 
 const { useState, useEffect } = React
@@ -11,11 +12,22 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [note, setNote] = useState(noteService.getEmptyNote())
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
 
     useEffect(() => {
-        console.log('mount')
-        noteService.query().then(setNotes)
-    }, [note])
+        noteService.query().then(setNotes);
+    }, [note]);
+
+    useEffect(() => {
+        noteService.query(filterBy).then(setNotes);
+    }, [filterBy]);
+
+    // function onSaveNote(note){
+    //     noteService.save(note).then(savedNote=>{
+    //         const updatedNoted= notes.map(n=> n.id === savedNote.id? savedNote : n);
+    //         setNotes(updatedNoted)
+    //     })
+    // }
 
     function onRemoveNote(noteId) {
         noteService.remove(noteId).then(() => {
@@ -30,11 +42,13 @@ export function NoteIndex() {
     function onSetNote(note) {
         setNote(prevNote => ({ ...prevNote, ...note }))
     }
-
-    console.log('render')
+    function onSetFilterBy(filterBy) {
+        console.log('filterBy:', filterBy)
+        setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
+    }
     if (!notes) return <div>Loading...</div>
     return (<section className="note-index">
-        {/* <BookFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} /> */}
+        <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
         {/* <Link to="/note" >Add Book</Link> */}
         <NoteEdit note={note} onSetNote={onSetNote} />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} />
