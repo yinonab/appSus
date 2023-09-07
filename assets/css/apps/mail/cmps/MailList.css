@@ -1,5 +1,8 @@
 /* mail list */
-table {
+.mail-list {
+  /* height: 100%; */
   width: 100%;
+  background-color: white;
+
   /* border: 2px solid grey; */
 }

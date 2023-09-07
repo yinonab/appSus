@@ -20,18 +20,22 @@ export function MailDetails() {
 
   if (!mail) return <h1>Loading...</h1>;
   return (
-    <section>
-      <h1>from : {mail.from}</h1>
-      <h2>{mail.subject}</h2>
-      <p>{mail.body}</p>
-      <button onClick={onRemoveMail}>Delete</button>
-      <button
-        onClick={() => {
-          navigate("/mail");
-        }}
-      >
-        Back{" "}
-      </button>
+    <section className="mail-details">
+      <h1>Email from: {mail.from}</h1>
+      <div className="mail-content">
+        <h2>{mail.subject}</h2>
+        <p>{mail.body}</p>
+        <div className="btn-container">
+          <button onClick={onRemoveMail}>Delete</button>
+          <button
+            onClick={() => {
+              navigate("/mail");
+            }}
+          >
+            Back{" "}
+          </button>
+        </div>
+      </div>
     </section>
   );
 }

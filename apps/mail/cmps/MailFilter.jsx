@@ -33,7 +33,8 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
 
   const { txt, isRead } = filterByToEdit || {};
   return (
-    <section>
+    // <section className="mail-filter flex ">
+    <React.Fragment>
       <form onSubmit={onSubmitFilter}>
         <label htmlFor="txt">
           <input
@@ -44,17 +45,23 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
             type="text"
             placeholder="Search email"
           />
+          <label className="is-read-label" htmlFor="isRead">
+            unread
+            <input
+              onChange={handleChange}
+              value={isRead || false}
+              id="isRead"
+              name="isRead"
+              type="checkbox"
+            />
+          </label>
         </label>
-        <label htmlFor="isRead">Only unread</label>
-        <input
-          onChange={handleChange}
-          value={isRead || false}
-          id="isRead"
-          name="isRead"
-          type="checkbox"
-        />
       </form>
-      <div className="logo">EmailMaster</div>
-    </section>
+      <div className="logo-container">
+        <i className="fa-regular fa-envelope"></i>
+        <div className="logo">EmailMaster</div>
+      </div>
+    </React.Fragment>
+    // </section>
   );
 }

@@ -1,7 +1,7 @@
-tbody {
-  width: 100%;
-  height: 5vh;
-}
+/* tbody {
+  /* width: 100%; */
+/* height: 5vh; */
+/* } */
 .bold {
   font-weight: 800;
 }
@@ -13,4 +13,9 @@ tr:hover {
   background-color: grey;
   color: white;
   /* border: 2px solid black; */
+}
+.star-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
