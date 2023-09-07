@@ -90,7 +90,7 @@ export function NoteEdit({ note, onSetNote }) {
                     onClick={handleTitleClick}
                     placeholder="    Take a note..." value={txt}
                     type="text" name="txt" id="txt" />
-                <div class="btn-footer">
+                <div className="btn-footer">
                     {/* <button><i class="fa-light fa-palette"></i></button> */}
                     <button className="Close"></button>
                 </div>

@@ -3,8 +3,8 @@
     justify-content: start;
     grid-auto-flow: column;
     align-items: center;
-    margin-top: 4em;
-    margin-inline-start: 35em;
+    margin-top: 3em;
+    margin-inline-start: 30em;
     height: 4em;
     width: 45em;
     border-radius: .5em;
@@ -17,15 +17,15 @@ display: flex;}
 .edit-form input {
     margin-bottom: 10px; /* Adjust the value to control the gap size */
 }
-.input{
-    gap: 10px;
-}
 
-/* .input {
-    background: none;
+
+.input {
+    gap: 10px;
+    background: none !important;
     border: none;
     outline: none;
-} */
+
+}
 button{
     background: none;
     border: none;

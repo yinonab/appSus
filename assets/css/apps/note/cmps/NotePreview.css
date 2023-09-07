@@ -8,6 +8,7 @@
     width: 250px;
     display: inline-block;
     vertical-align: top;
+    cursor: pointer;
   }
   
   /* Note title style */

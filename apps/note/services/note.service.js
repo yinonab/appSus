@@ -103,18 +103,18 @@ function _createNotes() {
                     backgroundColor: '#edbebe'
                 }
             },
-            {
-                id: 'n103',
-                type: 'NoteTodos',
-                isPinned: false,
-                info: {
-                    title: 'Get my stuff together',
-                    todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
-                    ]
-                }
-            }
+            // {
+            //     id: 'n103',
+            //     type: 'NoteTodos',
+            //     isPinned: false,
+            //     info: {
+            //         title: 'Get my stuff together',
+            //         todos: [
+            //             { txt: 'Driving license', doneAt: null },
+            //             { txt: 'Coding power', doneAt: 187111111 }
+            //         ]
+            //     }
+            // }
 
         ]
         storageService.saveToStorage(NOTE_KEY, notes)

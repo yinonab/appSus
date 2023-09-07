@@ -4,7 +4,7 @@ import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteEdit } from "../views/EditNote.jsx"
 import { NoteFilter } from "../views/NoteFilter.jsx"
 import { FilterSide } from "./FilterSide.jsx"
-import { NotePreview } from "../cmps/NotePreview.jsx"
+// import { NotePreview } from "../cmps/NotePreview.jsx"
 
 
 const { useState, useEffect } = React
@@ -50,7 +50,6 @@ export function NoteIndex() {
     }
     function onSaveEditedContent(note, editedContent) {
         console.log('variable:', note, editedContent)
-        debugger
         note.info.title = editedContent.title;
         note.info.txt = editedContent.txt;
         noteService.save(note)
@@ -67,7 +66,7 @@ export function NoteIndex() {
             <main className="main">
                 <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
                 <NoteEdit note={note} onSetNote={onSetNote} />
-                <NotePreview note={note} onRemoveNote={onRemoveNote} />
+                {/* <NotePreview note={note} onRemoveNote={onRemoveNote} /> */}
                 <NoteList notes={notes} onSaveEditedContent={onSaveEditedContent} onRemoveNote={onRemoveNote} />
             </main>
             {/* <aside className="aside">
