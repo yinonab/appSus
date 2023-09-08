@@ -15,14 +15,16 @@ export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [note, setNote] = useState(noteService.getEmptyNote())
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
+    const [showDeleted, setShowDeleted] = useState(false);
+
 
     useEffect(() => {
         noteService.query().then(setNotes);
     }, [note]);
 
     useEffect(() => {
-        noteService.query(filterBy).then(setNotes);
-    }, [filterBy]);
+        noteService.query({ ...filterBy, showDeleted }).then(setNotes);
+    }, [filterBy, showDeleted]);
 
     // function onSaveNote(note){
     //     noteService.save(note).then(savedNote=>{
@@ -32,14 +34,33 @@ export function NoteIndex() {
     // }
 
     function onRemoveNote(noteId) {
-        noteService.remove(noteId).then(() => {
-            setNotes(prevNotes => prevNotes.filter(note => note.id !== noteId))
-            showSuccessMsg(`Note Removed!`)
-        })
-            .catch(err => {
-                console.log('err:', err)
-                showErrorMsg('Problem Removing ' )
-            })
+        noteService.get(noteId).then((deletedNote) => {
+            deletedNote.isDeleted = true;
+            noteService.save(deletedNote).then(() => {
+                setNotes((prevNotes) =>
+                    prevNotes.map((note) =>
+                        note.id === noteId ? { ...note, isDeleted: true } : note
+                    )
+                );
+    
+                // Update filterBy to trigger the useEffect
+                setFilterBy((prevFilter) => ({
+                    ...prevFilter,
+                    _dummyKey: Math.random(), // Change _dummyKey to force re-render
+                }));
+    
+                showSuccessMsg(`Note Deleted!`);
+            });
+        });
+    }
+    
+    function toggleShowActive() {
+        setShowDeleted(false);
+    }
+
+    // Function to toggle showing deleted notes
+    function toggleShowDeleted() {
+        setShowDeleted(true);
     }
     function onSetNote(note) {
         setNote(prevNote => ({ ...prevNote, ...note }))
@@ -68,11 +89,21 @@ export function NoteIndex() {
             <main className="main">
                 <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
                 <NoteEdit note={note} onSetNote={onSetNote} />
-                {/* <NotePreview note={note} onRemoveNote={onRemoveNote} /> */}
-                <NoteList notes={notes} onSaveEditedContent={onSaveEditedContent} onRemoveNote={onRemoveNote} />
+                <div>
+                <button onClick={toggleShowActive}>Show Active Notes</button>
+            <button onClick={toggleShowDeleted}>Show Deleted Notes</button>
+                </div>
+                <NoteList
+                    notes={notes}
+                    onSaveEditedContent={onSaveEditedContent}
+                    onRemoveNote={onRemoveNote}
+                />
             </main>
-            {/* <aside className="aside">
-                
-            </aside> */}
-        </section>)
-}
+        </section>
+    );
+    }    
+    
+    
+    
+    
+    

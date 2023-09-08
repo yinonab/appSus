@@ -20,20 +20,25 @@ export const noteService = {
 }
 
 function query(filterBy = {}) {
-    return asyncStorageService.query(NOTE_KEY)
-        .then(notes => {
-            if (filterBy.info && filterBy.info.txt) { // Check if filterBy.info exists
-                const regex = new RegExp(filterBy.info.txt, 'i')
-                notes = notes.filter(note => regex.test(note.info.txt))
-            }
-            if (filterBy.info && filterBy.info.title) {
-                const regex = new RegExp(filterBy.info.title, 'i')
-                notes = notes.filter(note => regex.test(note.info.title))
-            }
-          
-            return notes
-        })
+    return asyncStorageService.query(NOTE_KEY).then((notes) => {
+        if (filterBy.info && filterBy.info.txt) {
+            const regex = new RegExp(filterBy.info.txt, 'i');
+            notes = notes.filter((note) => regex.test(note.info.txt));
+        }
+        if (filterBy.info && filterBy.info.title) {
+            const regex = new RegExp(filterBy.info.title, 'i');
+            notes = notes.filter((note) => regex.test(note.info.title));
+        }
+        
+        // Filter based on the showDeleted property
+        if (!filterBy.showDeleted) {
+            notes = notes.filter((note) => !note.isDeleted);
+        }
+
+        return notes;
+    });
 }
+
 function get(noteId) {
     return asyncStorageService.get(NOTE_KEY, noteId)
 }
