@@ -30,8 +30,8 @@ img{
     background-color:rgb(230, 231, 222) ;
     cursor: pointer;
     min-height: 3rem;
-    min-width: 13rem;
-    width: 100%;
+    min-width: 25rem;
+    /* width: 100%; */
     border: .5px solid black;
     line-height:1.25;
     border-top-left-radius: 0;
