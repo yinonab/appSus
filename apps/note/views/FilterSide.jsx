@@ -1,16 +1,16 @@
 
+
+const { Link } = ReactRouterDOM
 const { useState, useEffect } = React
-export function FilterSide(){
+export function FilterSide({ toggleShowNotDeletedOrArchived, toggleShowDeleted, toggleShowArchived }) {
     return (
-        <React.Fragment>
-            <img src="./apps/img/keep.png" alt="" />
         <div className="filter-side">
-            <h1>Filter</h1>
+            <button onClick={toggleShowNotDeletedOrArchived}>Show Not Deleted or Archived Notes</button>
+            <button onClick={toggleShowDeleted}>Show Deleted Notes</button>
+            <button onClick={toggleShowArchived}>Show Archived Notes</button>
         </div>
-        <div className="filter-side">
-            <h1>Filter</h1>
-        </div>
-        </React.Fragment>
-        
-    )
+    );
 }
+
+
+

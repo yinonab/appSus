@@ -1,7 +1,9 @@
 .note-index {
     height: 100vh;
     display: grid;
-    grid-template-columns: 1.5fr 10fr;}
+    grid-template-columns: 1.5fr 10fr;
+}
+    
 
 /* .note-index.header {
     grid-column: 1/-1;

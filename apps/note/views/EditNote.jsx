@@ -45,6 +45,7 @@ export function NoteEdit({ note, onSetNote }) {
             return { ...prevNoteToEdit, info };
         });
     }
+    
 
 
 

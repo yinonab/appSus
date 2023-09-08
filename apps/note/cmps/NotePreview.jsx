@@ -4,7 +4,7 @@ import { noteService } from "../services/note.service.js"
 const { Link } = ReactRouterDOM
 const { useState, useEffect } = React
 
-export function NotePreview({ note, onRemoveNote, onSaveEditedContent }) {
+export function NotePreview({ note, onRemoveNote, onSaveEditedContent, onMoveToArchive }) {
     const { style, type, info, title } = note
     const defaultBackgroundColor = '#ddd'
     const backgroundColor = style ? style.backgroundColor || defaultBackgroundColor : defaultBackgroundColor
@@ -50,6 +50,7 @@ export function NotePreview({ note, onRemoveNote, onSaveEditedContent }) {
                 <section>
                     <button onClick={handleSave}>Save</button>
                     <button onClick={() => onRemoveNote(note.id)}>❌</button>
+                    <button onClick={() =>  onMoveToArchive(note.id)}>🗑</button>
                     {/* <button><Link to={`/note/${note.id}`}>Details</Link></button> */}
                     {/* <button><Link to={`/note/${note.id}`}>Edit</Link></button> */}
 

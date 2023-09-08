@@ -20,24 +20,31 @@ export const noteService = {
 }
 
 function query(filterBy = {}) {
-    return asyncStorageService.query(NOTE_KEY).then((notes) => {
-        if (filterBy.info && filterBy.info.txt) {
-            const regex = new RegExp(filterBy.info.txt, 'i');
-            notes = notes.filter((note) => regex.test(note.info.txt));
-        }
-        if (filterBy.info && filterBy.info.title) {
-            const regex = new RegExp(filterBy.info.title, 'i');
-            notes = notes.filter((note) => regex.test(note.info.title));
-        }
-        
-        // Filter based on the showDeleted property
-        if (!filterBy.showDeleted) {
-            notes = notes.filter((note) => !note.isDeleted);
-        }
+    return asyncStorageService.query(NOTE_KEY)
+        .then(notes => {
+            if (filterBy.info && filterBy.info.txt) {
+                const regex = new RegExp(filterBy.info.txt, 'i');
+                notes = notes.filter(note => regex.test(note.info.txt));
+            }
+            if (filterBy.info && filterBy.info.title) {
+                const regex = new RegExp(filterBy.info.title, 'i');
+                notes = notes.filter(note => regex.test(note.info.title));
+            }
+            
+            // Filter by deleted status
+            if (filterBy.showDeleted !== undefined) {
+                notes = notes.filter(note => note.isDeleted === filterBy.showDeleted);
+            }
 
-        return notes;
-    });
+            // Filter by archived status
+            if (filterBy.showArchived !== undefined) {
+                notes = notes.filter(note => note.isArchived === filterBy.showArchived);
+            }
+
+            return notes;
+        });
 }
+
 
 function get(noteId) {
     return asyncStorageService.get(NOTE_KEY, noteId)
@@ -71,8 +78,9 @@ function getEmptyNote(id = '', type = '', title, txt = '',time = Date.now()) {
         type: 'NoteTxt',
         isPinned: false,
         isDeleted: false,
+        isArchived: false,
         style: {
-            backgroundColor: '#edbebe'
+            backgroundColor: '#f0f4c3'
         },
         info: {
             title,
@@ -84,19 +92,19 @@ function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [
-            {
-                id: 'n101',
-                time: Date.now(),
-                type: 'NoteTxt',
-                isPinned: true,
-                style: {
-                    backgroundColor: '#f0f4c3'
-                },
-                info: {
-                    title: 'Welcome to Academy Keep',
-                    txt: "Academy Keep lets you quickly capture what’s on your mind.To start a new note, list, or photo note, use the 'Add note' bar above."
-                }
-            },
+            // {
+            //     id: 'n101',
+            //     time: Date.now(),
+            //     type: 'NoteTxt',
+            //     isPinned: true,
+            //     style: {
+            //         backgroundColor: '#f0f4c3'
+            //     },
+            //     info: {
+            //         title: 'Welcome to Academy Keep',
+            //         txt: "Academy Keep lets you quickly capture what’s on your mind.To start a new note, list, or photo note, use the 'Add note' bar above."
+            //     }
+            // },
             // {
             //     id: 'n102',
             //     type: 'NoteImg',
