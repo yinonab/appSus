@@ -9,13 +9,14 @@ export function NotePreview({ note, onRemoveNote, onSaveEditedContent }) {
     const defaultBackgroundColor = '#ddd'
     const backgroundColor = style ? style.backgroundColor || defaultBackgroundColor : defaultBackgroundColor
 
-    const [editedTitle, setEditedTitle] = useState(info.title);
-    const [editedText, setEditedText] = useState(info.txt);
+    const [editedTitle, setEditedTitle] = useState(info.title)
+    const [editedText, setEditedText] = useState(info.txt)
+    const [editedtime, setEditedtime] = useState(new Date().toLocaleString())
     const handleSave = () => {
         // Call the onSaveEditedContent function and pass the updated content
-        onSaveEditedContent(note, { title: editedTitle, txt: editedText });
+        onSaveEditedContent(note, { title: editedTitle, txt: editedText,time: editedtime });
 
-    };
+    }
 
     return (
         <div>
@@ -24,6 +25,7 @@ export function NotePreview({ note, onRemoveNote, onSaveEditedContent }) {
                     <div>
                         <h2 contentEditable="true" suppressContentEditableWarning={true} className="note-title" onInput={(e) => setEditedTitle(e.target.innerText)}>{editedTitle}</h2>
                         <p contentEditable="true" suppressContentEditableWarning={true} onInput={(e) => setEditedText(e.target.innerText)}>{editedText}</p>
+                        <h5>{editedtime}</h5>
                     </div>
                 )}
                 {type === 'NoteImg' && (

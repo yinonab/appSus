@@ -52,6 +52,7 @@ export function NoteIndex() {
         console.log('variable:', note, editedContent)
         note.info.title = editedContent.title;
         note.info.txt = editedContent.txt;
+        note.time = Date.now();
         noteService.save(note)
         showSuccessMsg(`Note Updated!`)
         // Implement the logic to save edited content here
@@ -61,9 +62,9 @@ export function NoteIndex() {
     if (!notes) return <div>Loading...</div>
     return (
         <section className="note-index">
-            <header className="header">
+            <aside className="header">
                 <FilterSide />
-            </header>
+            </aside>
             <main className="main">
                 <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
                 <NoteEdit note={note} onSetNote={onSetNote} />

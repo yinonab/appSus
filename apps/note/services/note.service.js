@@ -59,12 +59,13 @@ function setFilterBy(filterBy = {}) {
     return filterBy
 }
 
-function getEmptyNote(id = '', type = '', title, txt = '') {
+function getEmptyNote(id = '', type = '', title, txt = '',time = Date.now()) {
     return {
         id,
-        createdAt: Date.now(),
+        time,
         type: 'NoteTxt',
         isPinned: false,
+        isDeleted: false,
         style: {
             backgroundColor: '#edbebe'
         },
@@ -80,29 +81,29 @@ function _createNotes() {
         notes = [
             {
                 id: 'n101',
-                createdAt: 1112222,
+                time: Date.now(),
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#edbebe'
+                    backgroundColor: '#f0f4c3'
                 },
                 info: {
-                    title: 'Bobi and Me',
-                    txt: 'Fullstack Me Baby!'
+                    title: 'Welcome to Academy Keep',
+                    txt: "Academy Keep lets you quickly capture what’s on your mind.To start a new note, list, or photo note, use the 'Add note' bar above."
                 }
             },
-            {
-                id: 'n102',
-                type: 'NoteImg',
-                isPinned: false,
-                info: {
-                    url: 'http://some-img/me',
-                    title: 'Bobi and Me'
-                },
-                style: {
-                    backgroundColor: '#edbebe'
-                }
-            },
+            // {
+            //     id: 'n102',
+            //     type: 'NoteImg',
+            //     isPinned: false,
+            //     info: {
+            //         url: 'http://some-img/me',
+            //         title: 'Bobi and Me'
+            //     },
+            //     style: {
+            //         backgroundColor: '#edbebe'
+            //     }
+            // },
             // {
             //     id: 'n103',
             //     type: 'NoteTodos',
