@@ -1,4 +1,43 @@
+
+.filter-side{
+    display:grid;
+    grid-auto-flow: row;
+    justify-items: start;
+    align-items: start;
+}
+
 img{
     height: 30px;
     width: 30px;
+}
+.filter-side button{
+    background-color:rgb(240, 244, 195) ;
+    /* font-family: Goo; */
+    cursor: pointer;
+    min-height: 3rem;
+    min-width: 25rem;
+    /* width: 100%; */
+    border: .5px solid black;
+    line-height:1.25;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    color: #202124;
+    font-weight: bold;
+}
+.filter-side button:hover{
+    background-color:rgb(230, 231, 222) ;
+    cursor: pointer;
+    min-height: 3rem;
+    min-width: 13rem;
+    width: 100%;
+    border: .5px solid black;
+    line-height:1.25;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    color: #202124;
+    font-weight: bold;
 }

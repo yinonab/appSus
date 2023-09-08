@@ -48,9 +48,9 @@ export function NotePreview({ note, onRemoveNote, onSaveEditedContent, onMoveToA
 
 
                 <section>
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={() => onRemoveNote(note.id)}>❌</button>
-                    <button onClick={() =>  onMoveToArchive(note.id)}>🗑</button>
+                    <button className="btn" onClick={handleSave}>Save</button>
+                    <button className="btn" onClick={() => onRemoveNote(note.id)}>❌</button>
+                    <button className="btn" onClick={() =>  onMoveToArchive(note.id)}>🗑</button>
                     {/* <button><Link to={`/note/${note.id}`}>Details</Link></button> */}
                     {/* <button><Link to={`/note/${note.id}`}>Edit</Link></button> */}
 
