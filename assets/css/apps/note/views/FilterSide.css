@@ -4,18 +4,16 @@
     grid-auto-flow: row;
     justify-items: start;
     align-items: start;
+    text-align: left;
 }
 
-img{
-    height: 30px;
-    width: 30px;
-}
+
 .filter-side button{
     background-color:rgb(240, 244, 195) ;
     /* font-family: Goo; */
     cursor: pointer;
-    min-height: 3rem;
-    min-width: 25rem;
+    height: 3rem;
+    width: 25rem;
     /* width: 100%; */
     border: .5px solid rgb(220, 212, 212);
     line-height:1.25;
@@ -25,6 +23,8 @@ img{
     border-bottom-right-radius: 50px;
     color: #202124;
     font-weight: bold;
+    text-align: left;
+    padding-left: 35px;
 }
 .filter-side button:hover{
     background-color:rgb(230, 231, 222) ;
