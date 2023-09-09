@@ -114,7 +114,7 @@ export function NoteIndex() {
         console.log('variable:', note, editedContent)
         note.info.title = editedContent.title;
         note.info.txt = editedContent.txt;
-        note.time = Date.now();
+        // note.time = Date.now();
         noteService.save(note)
         showSuccessMsg(`Note Updated!`)
         // Implement the logic to save edited content here
