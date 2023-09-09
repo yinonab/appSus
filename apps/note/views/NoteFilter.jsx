@@ -42,11 +42,12 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
                 <button className="search"><i className="fa-solid fa-magnifying-glass"></i></button>
                 <label htmlFor="info"></label>
                 <input className="input" onChange={handleChange}
-                    placeholder="Search" value={title}
+                    placeholder="Search Title..." value={title}
                     type="title" name="title" id="title" />
 
                 <label htmlFor="info"></label>
                 <input className="input" onChange={handleChange}
+                placeholder="Search Text..."
                      value={txt}
                     type="text" name="txt" id="txt" />
 

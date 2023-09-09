@@ -37,3 +37,4 @@
 @import "./apps/mail/cmps/MailAside.css";
 @import "./apps/mail/views/MailDetails.css";
 @import "./apps/mail/cmps/MailCompose.css";
+@import "../../assets/css/apps/note/views/mq.css";
