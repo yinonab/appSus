@@ -267,7 +267,7 @@
         /* margin-top: 2em; */
      }
     .note-filter {
-        margin-top: 15px;
+        margin-top: 3em;
         display: grid;
         justify-content: start;
         grid-auto-flow: column;
@@ -296,7 +296,7 @@
         /* font-family: Goo; */
         cursor: pointer;
         min-height: 3rem;
-        min-width: 20rem;
+        width: 21rem;
         /* width: 100%; */
         border: .5px solid rgb(220, 212, 212);
         line-height:1.25;
@@ -311,7 +311,7 @@
         background-color:rgb(230, 231, 222) ;
         cursor: pointer;
         min-height: 3rem;
-        min-width: 20rem;
+        width: 21rem;
         /* width: 100%; */
         border: .5px solid black;
         line-height:1.25;
