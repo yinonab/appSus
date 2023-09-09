@@ -18,6 +18,10 @@
     margin: 0;
     padding: 5px 0; /* Add padding here */
   }
+  .btn{
+    padding: 10px;
+    margin-top: 12px;
+  }
   
   /* Note content style */
   .note-content {

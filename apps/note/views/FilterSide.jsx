@@ -1,15 +1,16 @@
 
+
+const { Link } = ReactRouterDOM
 const { useState, useEffect } = React
-export function FilterSide(){
+export function FilterSide({ toggleShowNotDeletedOrArchived, toggleShowDeleted, toggleShowArchived }) {
     return (
-        <React.Fragment>
         <div className="filter-side">
-            <h1>Filter</h1>
+            <button onClick={toggleShowNotDeletedOrArchived}>Notes</button>
+            <button onClick={toggleShowDeleted}>Deleted</button>
+            <button onClick={toggleShowArchived}>Archived</button>
         </div>
-        <div className="filter-side">
-            <h1>Filter</h1>
-        </div>
-        </React.Fragment>
-        
-    )
+    );
 }
+
+
+
