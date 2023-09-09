@@ -47,8 +47,8 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
 
                 <label htmlFor="info"></label>
                 <input className="input" onChange={handleChange}
-                placeholder="Search Text..."
-                     value={txt}
+                    placeholder="Search Text..."
+                    value={txt}
                     type="text" name="txt" id="txt" />
 
             </form>

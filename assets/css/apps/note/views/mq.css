@@ -291,7 +291,7 @@
         
     
     }
-    .filter-side button{
+    .filter-side .sidebtn{
         background-color:rgb(240, 244, 195) ;
         /* font-family: Goo; */
         cursor: pointer;
@@ -307,7 +307,7 @@
         color: #202124;
         font-weight: bold;
     }
-    .filter-side button:hover{
+    .filter-side .sidebtn:hover{
         background-color:rgb(230, 231, 222) ;
         cursor: pointer;
         min-height: 3rem;
