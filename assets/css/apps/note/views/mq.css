@@ -311,7 +311,7 @@
         background-color:rgb(230, 231, 222) ;
         cursor: pointer;
         min-height: 3rem;
-        width: 21rem;
+        min-width: 21rem;
         /* width: 100%; */
         border: .5px solid black;
         line-height:1.25;
