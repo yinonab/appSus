@@ -1,5 +1,6 @@
 const { useParams, useNavigate } = ReactRouterDOM;
 const { useEffect, useState } = React;
+import { showSuccessMsg } from "../../../services/event-bus.service.js";
 import { mailService } from "../../../services/mail-service.js";
 
 export function MailDetails() {
@@ -14,7 +15,17 @@ export function MailDetails() {
   }, []);
   // console.log(mail);
   function onRemoveMail() {
-    mailService.remove(params.mailId).then(navigate("/mail"));
+    mailService.get(params.mailId).then((mail) => {
+      if (mail.status !== "trash") {
+        mail.status = "trash";
+        mailService.save(mail).then(() => {
+          console.log("moved  to trash");
+          navigate("/mail");
+        });
+      } else {
+        mailService.remove(params.mailId).then(navigate("/mail"));
+      }
+    });
   }
   // console.log(mail);
 
@@ -29,6 +40,7 @@ export function MailDetails() {
           <button onClick={onRemoveMail}>Delete</button>
           <button
             onClick={() => {
+              showSuccessMsg("moved to trash");
               navigate("/mail");
             }}
           >
