@@ -14,6 +14,18 @@
     grid-template-columns: repeat(5, 1fr);
     justify-items: center;
 }
+.note-filter {
+    display: grid;
+    justify-content: start;
+    grid-auto-flow: column;
+    align-items: normal;
+    margin-inline-start: 1em;
+    height: 4em;
+    border-radius: .5em;
+    width: 50em;
+    background-color:#f1f3f4
+    ;
+}
 .note-edit {
     display: grid;
     justify-content: start;
@@ -51,7 +63,7 @@
         justify-content: start;
         grid-auto-flow: column;
         align-items: normal;
-        margin-inline-start: 20em;
+        margin-inline-start: 3em;
         height: 4em;
         border-radius: .5em;
         width: 30em;
@@ -91,7 +103,7 @@
         justify-content: start;
         grid-auto-flow: column;
         align-items: normal;
-        margin-inline-start: 10em;
+        margin-inline-start: 3em;
         height: 4em;
         border-radius: .5em;
         width: 30em;
@@ -127,7 +139,7 @@
         justify-content: start;
         grid-auto-flow: column;
         align-items: normal;
-        margin-inline-start: 10em;
+        margin-inline-start: 3em;
         height: 4em;
         border-radius: .5em;
         width: 30em;
@@ -167,7 +179,7 @@
         justify-content: start;
         grid-auto-flow: column;
         align-items: normal;
-        margin-inline-start: 8em;
+        margin-inline-start: 3em;
         height: 4em;
         border-radius: .5em;
         width: 30em;
