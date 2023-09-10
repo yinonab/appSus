@@ -71,14 +71,14 @@ function setFilterBy(filterBy = {}) {
     return filterBy
 }
 
-function getEmptyNote(id = '', type = '', title, txt = '',time = Date.now()) {
+function getEmptyNote(id = '', type = '',isDeleted=false,isArchived=false, title, txt = '',time = Date.now()) {
     return {
         id,
         time,
         type: 'NoteTxt',
         isPinned: false,
-        isDeleted: false,
-        isArchived: false,
+        isDeleted,
+        isArchived,
         style: {
             backgroundColor: '#f0f4c3'
         },
@@ -92,19 +92,21 @@ function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [
-            // {
-            //     id: 'n101',
-            //     time: Date.now(),
-            //     type: 'NoteTxt',
-            //     isPinned: true,
-            //     style: {
-            //         backgroundColor: '#f0f4c3'
-            //     },
-            //     info: {
-            //         title: 'Welcome to Academy Keep',
-            //         txt: "Academy Keep lets you quickly capture what’s on your mind.To start a new note, list, or photo note, use the 'Add note' bar above."
-            //     }
-            // },
+            {
+                id: 'n101',
+                time: Date.now(),
+                type: 'NoteTxt',
+                isPinned: true,
+                isDeleted: false,
+                isArchived: false,
+                style: {
+                    backgroundColor: '#f0f4c3'
+                },
+                info: {
+                    title: 'Welcome to Academy Keep',
+                    txt: "Academy Keep lets you quickly capture what’s on your mind.To start a new note, list, or photo note, use the 'Add note' bar above."
+                }
+            }
             // {
             //     id: 'n102',
             //     type: 'NoteImg',
