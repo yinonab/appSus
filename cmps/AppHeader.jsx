@@ -10,10 +10,18 @@ export function AppHeader() {
             <h3>.</h3>
         </Link>
         <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/mail">Mail</NavLink>
-            <NavLink to="/note">Note</NavLink>
+            <NavLink to="/">
+            <img src="./assets/img/4.png" alt="" />
+            </NavLink>
+            <NavLink to="/about">
+            <img src="./assets/img/3.png" alt="" />
+            </NavLink>
+            <NavLink to="/mail">
+            <img src="./assets/img/5.png" alt="" />
+            </NavLink>
+            <NavLink to="/note">
+            <img src="./assets/img/keep.jpg" alt="" />
+            </NavLink>
         </nav>
         <UserMsg/>
     </header>
